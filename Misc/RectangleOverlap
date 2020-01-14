@@ -1,0 +1,13 @@
+/*
+https://stackoverflow.com/questions/23302698/java-check-if-two-rectangles-overlap-at-any-point
+Check if two rectangles overlap or not
+      x2,y2                x4,y4  
+                      
+x1,y1                 x3,y3
+
+The rectangles dont overlap if
+   x1>x4 (R1 right of R2) 
+or x3>x2 (R1 left of R2)
+or y1>y4 (R1 above R2)
+or y3>y2 (R1 below R2)
+*/
