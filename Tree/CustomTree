@@ -1,1 +1,78 @@
+/******************************************************************************
 
+Which city connected to which
+H B
+H D
+B C
+B A
+D E
+E X
+E Y
+X J
+J K
+If we start at H o/p is HBCADEXJKY(Refer print method)
+*******************************************************************************/
+
+public class Main
+{
+	public static void main(String[] args) {
+		
+    //We check if a city is already created using the map.
+    //If it is not present in map, we create it and add it to map.
+    Map<String,Node> map = new HashMap<>();
+    //Each line has two inputs, so store it in string array. eg: H B
+    //s[0]=H, s[1]=B
+    //If city does not exist create it.
+    if(!map.containsKey(s[0])){
+      Node node = new Node(s[0]);
+      map.put(node.value,node);
+    }
+    else
+      Node node = map.get(s[0]);
+    
+    if(map.contains(s[1]){
+     Node child = map.get(s[1]);
+    else{
+      Node child = new Node(s[1]);
+      map.put(child.value,child);
+    }
+    node.addChild(child);
+	}
+}
+
+class Node{
+    String value;
+    List<Node> subnodes;
+    int currentIndex=-1;
+    
+    Node(String value){
+        this.value=value;
+        subnodes=new ArrayList<>();
+    }
+    
+    public void addChild(Node child){
+        this.subnodes.add(child);
+    }
+    
+    /*
+                                H
+                        B               D    
+                    C       A           E
+                                    X       Y
+                                    J
+                                K
+    Output is: HBCADEXJKY
+    */
+    
+    public void print(Node node){
+        if(node==null)
+            return;
+        System.out.println(node.value);
+        while(1){
+            if(counter+1<node.size)
+                print(node.subnodes.(counter++));
+            else
+                return;
+        }
+    }
+}
