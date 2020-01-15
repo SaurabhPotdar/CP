@@ -1,0 +1,108 @@
+package com.cg.ui;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.cg.dto.Employee;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		
+		//Key is used to calculate the hashcode.
+		//Two keys are collide if they have same hashcode.
+		//Two keys are equal if they have same hashcode and equals() returns true.
+		
+		Employee employee1 = new Employee(1, "A");
+		Employee employee2 = new Employee(2, "B");
+		Employee employee3 = new Employee(2, "C"); //Collision, employee 2 and 3 stored in same bucket, 3 entries in map
+		//Employee employee3 = new Employee(2, "B"); //Employee 2 and 3 are same, so we have only two entries in map
+		
+		Map<Employee, Integer> map = new HashMap<>();
+		
+		System.out.println(employee1.hashCode());
+		System.out.println(employee2.hashCode());
+		System.out.println(employee3.hashCode());
+		System.out.println(employee2.equals(employee3));
+		
+		map.put(employee1,1);
+		System.out.println(map);
+		map.put(employee2,2);
+		System.out.println(map);
+		map.put(employee3,3);
+		System.out.println(map);
+		System.out.println(map.containsKey(employee2));
+		System.out.println(map.containsKey(employee3));
+		System.out.println(map.get(employee3));
+		System.out.println(map.get(employee2));
+	}
+
+}
+
+package com.cg.dto;
+
+public class Employee {
+	
+	private int empId;
+	private String empName;
+	
+	public Employee(int empId, String empName) {
+		super();
+		this.empId = empId;
+		this.empName = empName;
+	}
+
+	public Employee() {
+		super();
+	}
+
+	public int getEmpId() {
+		return empId;
+	}
+	
+	public void setEmpId(int empId) {
+		this.empId = empId;
+	}
+	
+	public String getEmpName() {
+		return empName;
+	}
+	
+	public void setEmpName(String empName) {
+		this.empName = empName;
+	}
+
+  /*
+  **********Important
+	*/
+  @Override
+	public int hashCode() {
+		return this.empId;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		if (empId != other.empId)
+			return false;
+		if (empName == null) {
+			if (other.empName != null)
+				return false;
+		} else if (!empName.equals(other.empName))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", empName=" + empName + "]";
+	}
+}
+
