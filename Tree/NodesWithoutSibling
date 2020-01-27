@@ -1,0 +1,12 @@
+void nodesWithoutSibling(Node node){
+	    if(node==null)
+		    return;
+		nodesWithoutSibling(node.left);
+		nodesWithoutSibling(node.right);
+		if(node.left==null && node.right!=null)
+		    sout(node.right.data);
+	    else if(node.left!=null && node.right==null)
+		    sout(node.left.data);
+		else if(node.left!=null && node.right!=null)
+		    return;
+	}
