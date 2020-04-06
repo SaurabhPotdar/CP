@@ -34,6 +34,22 @@ public class Graph {
 	        }
 		}
 	}
+	
+	public void DFS(int source) {
+		boolean[] visited = new boolean[this.noOfVertices];
+		DfsUtil(source, visited);
+	}
+
+	public void DfsUtil(int currentNode, boolean[] visited) {
+		visited[currentNode] = true;
+		System.out.print(currentNode + " ");
+		for(int i=0;i<adjacencyList[currentNode].size();i++) {
+			int destination = adjacencyList[currentNode].get(i);
+			if(!visited[destination]) {
+				DfsUtil(destination, visited);
+			}	
+		}
+	}
 
 	public static void main(String args[]) {
 		Graph graph = new Graph(5); // Create graph with 5 vertices
