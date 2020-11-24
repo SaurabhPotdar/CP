@@ -2,3 +2,17 @@
 int count(int n){
   return floor(log10(n)+1);
 }
+
+
+//Reverse 0(logn)
+//For a negative number, eg -321 discard negative sign and reverse and add
+//negative sign at the end.
+int reverse(int n){
+  int rev=0;
+  while(n!=0){
+    int digit = n%10;
+    rev=rev*10+digit;
+    n=n/10;
+  }
+  return rev;
+}
